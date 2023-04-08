@@ -26,12 +26,12 @@ export function Routes() {
         name="HomeTab"
         component={Home}
         options={{
-          tabBarIcon: ({ color, focused }) => {
+          tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <Ionicons name="home" color="#000" size={30} />;
+              return <Ionicons name="home" color="#000" size={size} />;
             }
 
-            return <Ionicons name="home-outline" color={color} size={30} />;
+            return <Ionicons name="home-outline" color={color} size={size} />;
           },
         }}
       />
@@ -39,11 +39,11 @@ export function Routes() {
         name="Favorites"
         component={Favorites}
         options={{
-          tabBarIcon: ({ color, focused }) => {
+          tabBarIcon: ({ color, size, focused }) => {
             if (focused) {
-              return <Ionicons name="heart" size={36} color="#ff4141" />;
+              return <Ionicons name="heart" size={size} color="#ff4141" />;
             }
-            return <Ionicons name="heart-outline" color={color} size={36} />;
+            return <Ionicons name="heart-outline" color={color} size={size} />;
           },
         }}
       />
