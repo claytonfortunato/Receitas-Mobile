@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   View,
   Text,
@@ -12,6 +13,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { Logo } from "../../components/logo";
 
 export const Home = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleSearch = () => {
+    console.log("VOCÊ CLICOU NESSE BOTAO!");
+    console.log(inputValue);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Logo />
@@ -23,8 +31,10 @@ export const Home = () => {
         <TextInput
           placeholder="Digite o nome da comida..."
           style={styles.input}
+          value={inputValue}
+          onChangeText={(text) => setInputValue(text)}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleSearch}>
           <Ionicons name="search" size={28} color="#4CBE6c" />
         </TouchableOpacity>
       </View>
