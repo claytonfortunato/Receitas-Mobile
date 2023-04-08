@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   logo: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: "bold",
     color: "#fff",
+    padding: 4,
   },
 });
