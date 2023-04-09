@@ -7,6 +7,7 @@ import {
   ScrollView,
   Image,
   Modal,
+  Share,
 } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 
@@ -39,6 +40,17 @@ export const Detail = () => {
     setShowVideo(true);
   };
 
+  const shareReceipe = async () => {
+    try {
+      await Share.share({
+        url: "https://sujeitoprogramador.com",
+        message: `Receita: ${route.params?.data.name}\nIngredientes: ${route.params?.data.total_ingredients}\nLá no app receita fácil`,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{ paddingBottom: 14 }}
@@ -61,7 +73,7 @@ export const Detail = () => {
             Ingredientes ({route.params?.data.total_ingredients})
           </Text>
         </View>
-        <Pressable>
+        <Pressable onPress={shareReceipe}>
           <Feather name="share-2" size={24} color="#121212" />
         </Pressable>
       </View>
