@@ -1,0 +1,41 @@
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  SafeAreaView,
+} from "react-native";
+
+import { Feather } from "@expo/vector-icons";
+
+export function VideoView({ handleClose, videoUrl }) {
+  return (
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={handleClose}>
+        <Feather name="arrow-left" size={24} color="#fff" />
+        <Text style={styles.backText}>Voltar</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    flex: 1,
+  },
+  backButton: {
+    width: "100%",
+    backgroundColor: "#4cbe6c",
+    height: 48,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingStart: 14,
+  },
+  backText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: 500,
+    marginLeft: 14,
+  },
+});
