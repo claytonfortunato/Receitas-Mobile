@@ -1,8 +1,18 @@
 import { useLayoutEffect } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+  Image,
+} from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, AntDesign, Feather } from "@expo/vector-icons";
+
+import { Ingredients } from "../../components/ingredients";
+import { Instructions } from "../../components/instructions";
 
 export const Detail = () => {
   const route = useRoute();
@@ -22,15 +32,71 @@ export const Detail = () => {
   }, [navigation, route.params?.data]);
 
   return (
-    <View style={styles.container}>
-      <Text>Página Detalhes da Receita</Text>
-      <Text>{route.params?.data.name}</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <Pressable>
+        <View style={styles.playIcon}>
+          <AntDesign name="playcircleo" size={48} color="#fafafa" />
+        </View>
+        <Image
+          source={{ uri: route.params?.data.cover }}
+          style={styles.cover}
+        />
+      </Pressable>
+
+      <View style={styles.headerDetails}>
+        <View>
+          <Text style={styles.title}>{route.params?.data.name}</Text>
+          <Text style={styles.ingredientsText}>
+            Ingredientes ({route.params?.data.total_ingredients})
+          </Text>
+        </View>
+        <Pressable>
+          <Feather name="share-2" size={24} color="#121212" />
+        </Pressable>
+      </View>
+
+      <Ingredients />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ddd",
+    backgroundColor: "#f3f9ff",
+    paddingTop: 14,
+    paddingEnd: 14,
+    paddingStart: 14,
+  },
+  cover: {
+    width: "100%",
+    height: 200,
+    borderRadius: 8,
+  },
+  playIcon: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9,
+  },
+  title: {
+    fontSize: 18,
+    marginTop: 14,
+    fontWeight: "bold",
+    color: "#000",
+    marginBottom: 4,
+  },
+  ingredientsText: {
+    marginBottom: 14,
+    fontSize: 16,
+  },
+  headerDetails: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 14,
   },
 });
