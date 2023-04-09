@@ -1,10 +1,17 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export function FoodList({ data }) {
+  const navigation = useNavigation();
+
+  const handleNavigate = () => {
+    navigation.navigate("Detail", { data: data });
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
       <Image source={{ uri: data.cover }} style={styles.cover} />
       <View style={styles.info}>
         <Text style={styles.name}>{data.name}</Text>
