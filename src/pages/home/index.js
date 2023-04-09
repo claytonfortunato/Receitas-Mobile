@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
     width: "90%",
     maxWidth: "90%",
     height: 54,
-    fontSize: 22,
+    fontSize: 18,
   },
 });

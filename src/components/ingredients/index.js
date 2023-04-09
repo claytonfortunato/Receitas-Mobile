@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export function Ingredients() {
+export function Ingredients({ data }) {
   return (
     <View style={styles.container}>
-      <Text>Massa de pizza</Text>
+      <Text style={styles.name}>{data.name}</Text>
+      <Text>{data.amount}</Text>
     </View>
   );
 }
@@ -11,5 +12,14 @@ export function Ingredients() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
+    marginBottom: 14,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 12,
+    borderRadius: 4,
+  },
+  name: {
+    fontWeight: 500,
+    fontSize: 18,
   },
 });
