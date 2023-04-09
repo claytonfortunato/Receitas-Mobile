@@ -16,9 +16,13 @@ import { FoodList } from "../../components/foodlist";
 
 import api from "../../services/api";
 
+import { useNavigation } from "@react-navigation/native";
+
 export const Home = () => {
   const [inputValue, setInputValue] = useState("");
   const [foods, setFoods] = useState([]);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -30,8 +34,11 @@ export const Home = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log("VOCÊ CLICOU NESSE BOTAO!");
-    console.log(inputValue);
+    if (!inputValue) return;
+
+    let input = inputValue;
+    setInputValue("");
+    navigation.navigate("Search", { name: input });
   };
 
   return (
