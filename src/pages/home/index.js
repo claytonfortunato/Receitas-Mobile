@@ -45,8 +45,8 @@ export const Home = () => {
     <SafeAreaView style={styles.container}>
       <Logo />
 
-      <Text style={styles.title}>Encontre a receita</Text>
-      <Text style={styles.title}>que combina com você</Text>
+      <Text>Encontre a receita</Text>
+      <Text>que combina com você</Text>
 
       <View style={styles.form}>
         <TextInput
